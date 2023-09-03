@@ -1,4 +1,4 @@
-# tf.aks
+
 
 This Terraform Git repo contains a module that create an AKS cluster in Azure. 
 
@@ -18,13 +18,13 @@ To use this Terraform module, follow these steps:
 Clone this Git repo to your local machine.
 
 ```bash
-git clone git@github.com:duck-creek/tf.aks.git
+git@github.com:NashTech-Labs/Terraform_code_for_Priavte_AKS_cluster_with_all_security_and_compliance.git
 ```
 
 Change into the directory containing the module.
 
 ```bash
-cd tf.aks/module
+cd Terraform_code_for_Priavte_AKS_cluster_with_all_security_and_compliance
 ```
 
 Initialize Terraform in the directory.
