@@ -18,36 +18,13 @@ data "azurerm_subnet" "akssubnet" {
 data "azurerm_resource_group" "aks_rg" {
   name = var.resource_group_name
 }
-data "azurerm_key_vault" "example" {
-  name                = "example-keyvault12"
-  resource_group_name = "example-resources"
-}
 
-data "azurerm_key_vault_key" "key" {
-  provider = azurerm.hub
-  name = local.secretKeyName
-  key_vault_id = data.azurerm_key_vault.hubkv.id
-
-}
-
-resource "azurerm_disk_encryption_set" "example" {
-  name                = "disc_encryptionaks"
-  resource_group_name = data.azurerm_resource_group.aks_rg.name
-  location            = data.azurerm_resource_group.aks_rg.location
-  key_vault_key_id     = data.azurerm_key_vault.example.id
-  # Add more encryption settings as needed
-
-  identity {
-    type = "SystemAssigned"
-  }
-}
 resource "azurerm_log_analytics_workspace" "aks_workspace" {
   name                = var.workspace
   location            = data.azurerm_resource_group.aks_rg.location
   resource_group_name = data.azurerm_resource_group.aks_rg.name
 
 }
-
 resource "azurerm_kubernetes_cluster" "aks" {
   name                                = var.cluster_name
   kubernetes_version                  = var.kubernetes_version
@@ -62,8 +39,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
   oms_agent {
     log_analytics_workspace_id = azurerm_log_analytics_workspace.aks_workspace.id
   }
-
-  #disk_encryption_set_id = var.encryption_id
 
   default_node_pool {
     name                = var.node_pool_name
