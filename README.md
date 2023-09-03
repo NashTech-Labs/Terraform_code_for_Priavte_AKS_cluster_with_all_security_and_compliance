@@ -104,7 +104,7 @@ The module accepts the following inputs:
 | kubernetes_version                  | Kubernetes version                                                | string        | 1.25.5              |
 | system_node_count                   | Number of AKS worker nodes                                        | number        | 1                   |
 | vm_size                             | Size of node pool                                                 | string        | Standard_DS2_v2     |
-| node_pool_name                      | Node pool name                                                    | string        | dctvm               |
+| node_pool_name                      | Node pool name                                                    | string        | vm12               |
 | enable_auto_scaling                 | Auto scaling node pool                                            | string        | false               |
 | aks_node_pool_type                  | AKS node pool type                                                | string        | VirtualMachineScaleSets |
 | os_disk_size_gb                     | Disk size in GB                                                   | number        | 30                  |
